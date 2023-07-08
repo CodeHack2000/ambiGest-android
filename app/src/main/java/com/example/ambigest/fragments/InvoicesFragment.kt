@@ -5,22 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ambigest.R
-import com.example.ambigest.databinding.FragmentDashboardBinding
-import com.example.ambigest.viewModel.AuthViewModel
+import com.example.ambigest.adaptor.InvoicesAdaptor
+import com.example.ambigest.databinding.FragmentInvoicesBinding
+import com.example.ambigest.viewModel.InvoicesViewModel
 
-class DashboardFragment : Fragment() {
-    private var binding: FragmentDashboardBinding ?= null
-    private val authViewModel: AuthViewModel by activityViewModels()
+class InvoicesFragment : Fragment() {
+    private var binding: FragmentInvoicesBinding ?= null
+    private val invoicesViewModel: InvoicesViewModel by viewModels()
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding = FragmentInvoicesBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -29,16 +32,14 @@ class DashboardFragment : Fragment() {
 
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = authViewModel
+            viewModel = invoicesViewModel
         }
 
-        authViewModel.reinitializaData()
-
-        binding?.dashboardNavigation?.selectedItemId = R.id.page_1
+        binding?.dashboardNavigation?.selectedItemId = R.id.page_2
         binding?.dashboardNavigation?.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
-                R.id.page_2 -> {
-                    findNavController().navigate(R.id.action_dashboardFragment_to_invoicesFragment)
+                R.id.page_1 -> {
+                    findNavController().navigate(R.id.action_invoicesFragment_to_dashboardFragment)
                     true
                 }
                 R.id.page_3 -> {
@@ -49,6 +50,11 @@ class DashboardFragment : Fragment() {
                 }
                 else -> false
             }
+        }
+
+        recyclerView = binding?.invoicesRv!!
+        invoicesViewModel.invoicesDataset.observe(viewLifecycleOwner) {dataset ->
+            recyclerView.adapter = InvoicesAdaptor(dataset)
         }
     }
 
