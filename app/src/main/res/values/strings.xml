@@ -16,4 +16,14 @@
     <string name="entrarSmall">Entrar</string>
     <string name="enviar_email_de_redefini_o_de_senha">ENVIAR EMAIL DE REDEFINIÇÃO DE SENHA</string>
     <string name="repor_a_palavra_passe">Repor a palavra-passe</string>
+    <string name="ol">Olá, %s</string>
+    <string name="fatura_o">Faturação</string>
+    <string name="home">Home</string>
+    <string name="recolhas">Recolhas</string>
+    <string name="leituras">Leituras</string>
+    <string name="as_minhas_faturas">As minhas faturas</string>
+    <string name="por_m3">%s € por m3</string>
+    <string name="consumo">Consumo</string>
+    <string name="aumento">Aumento</string>
+    <string name="total">Total</string>
 </resources>

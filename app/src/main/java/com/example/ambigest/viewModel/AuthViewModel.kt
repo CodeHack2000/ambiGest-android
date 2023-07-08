@@ -29,6 +29,9 @@ class AuthViewModel: ViewModel() {
     private val _isLoggedIn = MutableLiveData<Boolean>()
     val isLoggedIn: LiveData<Boolean> = _isLoggedIn
 
+    private val _username = MutableLiveData<String>()
+    val username: LiveData<String> = _username
+
     init {
         reinitializaData()
     }
@@ -36,6 +39,11 @@ class AuthViewModel: ViewModel() {
     fun reinitializaData() {
         setEmail("")
         setPassword("")
+        setUsername("Tester")
+    }
+
+    fun setUsername(value: String) {
+        _username.value = value
     }
 
     fun setEmail(value: String) {
