@@ -1,86 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="loginFragment"
+            type="com.example.ambigest.fragments.LoginFragment" />
+        <variable
+            name="viewModel"
+            type="com.example.ambigest.viewModel.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.LoginFragment"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        tools:context=".fragments.LoginFragment">
 
         <ImageView
             android:id="@+id/login_img_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:src="@drawable/logo"
-            android:layout_marginTop="80dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/login_tv_title"
+            style="?attr/textAppearanceHeadline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/entrar_no_ambigest"
             android:textStyle="bold"
-            style="?attr/textAppearanceHeadline5"
-            app:layout_constraintTop_toBottomOf="@+id/login_img_logo"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/entrar_no_ambigest" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_img_logo" />
 
         <TextView
             android:id="@+id/login_tv_email"
+            style="?attr/textAppearanceHeadline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginHorizontal="20dp"
-            style="?attr/textAppearanceHeadline6"
-            app:layout_constraintTop_toBottomOf="@+id/login_tv_title"
-            android:text="@string/email" />
+            android:layout_marginTop="40dp"
+            android:text="@string/email"
+            app:layout_constraintTop_toBottomOf="@+id/login_tv_title" />
 
         <EditText
             android:id="@+id/login_et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:textSize="20sp"
             android:hint="@string/email"
+            android:text="@{viewModel.email}"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/login_tv_email" />
 
         <TextView
             android:id="@+id/login_tv_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="20dp"
             style="?attr/textAppearanceHeadline6"
-            app:layout_constraintTop_toBottomOf="@+id/login_et_email"
-            android:text="@string/palavra_passe" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/palavra_passe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_et_email" />
 
         <EditText
             android:id="@+id/login_et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:textSize="20sp"
             android:hint="@string/palavra_passe"
+            android:text="@{viewModel.password}"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/login_tv_password" />
 
+        <TextView
+            android:id="@+id/login_tvBtn_recoverPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/esqueceu_se_da_palavra_passe"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_et_password"
+            android:onClick="@{() -> loginFragment.redirectToForgotPasswordFragment()}"/>
+
         <Button
+            android:id="@+id/login_btn_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@color/primary_dark"
             android:text="@string/entrar"
-            app:layout_constraintTop_toBottomOf="@+id/login_et_password" />
+            app:layout_constraintTop_toBottomOf="@+id/login_tvBtn_recoverPassword"
+            android:onClick="@{() -> viewModel.doLogin()}"/>
+
+        <TextView
+            android:id="@+id/login_tv_register"
+            style="?attr/textAppearanceHeadline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/novo_no_ambigest"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/login_tvBtn_register"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/login_tvBtn_register"
+            style="?attr/textAppearanceHeadline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crie_uma_conta"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/login_tv_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/login_tv_register"
+            android:onClick="@{() -> loginFragment.redirectToRegisterFragment()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

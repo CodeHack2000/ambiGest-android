@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         navController = fragmentContainerView.navController
 
         setupActionBarWithNavController(navController)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onBackPressed() {
@@ -24,6 +25,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return false
     }
 }
