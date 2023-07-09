@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_invoicesFragment"
             app:destination="@id/invoicesFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_readingsFragment"
+            app:destination="@id/readingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/invoicesFragment"
@@ -53,5 +56,19 @@
         <action
             android:id="@+id/action_invoicesFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_invoicesFragment_to_readingsFragment"
+            app:destination="@id/readingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readingsFragment"
+        android:name="com.example.ambigest.fragments.ReadingsFragment"
+        android:label="Leituras">
+        <action
+            android:id="@+id/action_readingsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_readingsFragment_to_invoicesFragment"
+            app:destination="@id/invoicesFragment" />
     </fragment>
 </navigation>

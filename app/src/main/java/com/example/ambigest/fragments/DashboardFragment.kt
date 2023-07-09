@@ -45,6 +45,7 @@ class DashboardFragment : Fragment() {
                     true
                 }
                 R.id.page_4 -> {
+                    findNavController().navigate(R.id.action_dashboardFragment_to_readingsFragment)
                     true
                 }
                 else -> false

@@ -26,4 +26,8 @@
     <string name="consumo">Consumo</string>
     <string name="aumento">Aumento</string>
     <string name="total">Total</string>
+    <string name="as_minhas_leituras">As minhas leituras</string>
+    <string name="pr_xima_leitura">Próxima leitura...</string>
+    <string name="nova_leitura">Nova Leitura</string>
+    <string name="x">X</string>
 </resources>
