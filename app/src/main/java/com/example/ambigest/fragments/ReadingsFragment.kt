@@ -9,13 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ambigest.R
-import com.example.ambigest.adaptor.InvoicesAdaptor
-import com.example.ambigest.databinding.FragmentInvoicesBinding
-import com.example.ambigest.viewModel.InvoicesViewModel
+import com.example.ambigest.adaptor.ReadingsAdaptor
+import com.example.ambigest.databinding.FragmentReadingsBinding
+import com.example.ambigest.viewModel.ReadingViewModel
 
-class InvoicesFragment : Fragment() {
-    private var binding: FragmentInvoicesBinding ?= null
-    private val invoicesViewModel: InvoicesViewModel by viewModels()
+class ReadingsFragment : Fragment() {
+    private var binding: FragmentReadingsBinding ?= null
+    private val readingViewModel: ReadingViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class InvoicesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentInvoicesBinding.inflate(inflater, container, false)
+        binding = FragmentReadingsBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -32,30 +32,30 @@ class InvoicesFragment : Fragment() {
 
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = invoicesViewModel
+            viewModel = readingViewModel
         }
 
-        binding?.invoicesNavigation?.selectedItemId = R.id.page_2
-        binding?.invoicesNavigation?.setOnNavigationItemSelectedListener { menuItem ->
+        binding?.readingsNavigation?.selectedItemId = R.id.page_4
+        binding?.readingsNavigation?.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.page_1 -> {
-                    findNavController().navigate(R.id.action_invoicesFragment_to_dashboardFragment)
+                    findNavController().navigate(R.id.action_readingsFragment_to_dashboardFragment)
+                    true
+                }
+                R.id.page_2 -> {
+                    findNavController().navigate(R.id.action_readingsFragment_to_invoicesFragment)
                     true
                 }
                 R.id.page_3 -> {
-                    true
-                }
-                R.id.page_4 -> {
-                    findNavController().navigate(R.id.action_invoicesFragment_to_readingsFragment)
                     true
                 }
                 else -> false
             }
         }
 
-        recyclerView = binding?.invoicesRv!!
-        invoicesViewModel.invoicesDataset.observe(viewLifecycleOwner) {dataset ->
-            recyclerView.adapter = InvoicesAdaptor(dataset)
+        recyclerView = binding?.readingsRv!!
+        readingViewModel.readingsDataset.observe(viewLifecycleOwner) {dataset ->
+            recyclerView.adapter = ReadingsAdaptor(dataset)
         }
     }
 
