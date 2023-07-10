@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ambigest.R
 import com.example.ambigest.databinding.FragmentLoginBinding
@@ -16,7 +15,7 @@ import com.example.ambigest.viewModel.AuthViewModel
 
 class LoginFragment : Fragment() {
     private var binding: FragmentLoginBinding ?= null
-    private val authViewModel: AuthViewModel by activityViewModels()
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
