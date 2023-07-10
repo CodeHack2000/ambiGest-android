@@ -12,7 +12,9 @@ import com.example.ambigest.network.LoginRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
+import retrofit2.Response
 import org.json.JSONObject
+import android.util.Log
 
 class AuthViewModel: ViewModel() {
     private val apiService = AmbiGestApi.retrofitService
@@ -26,10 +28,13 @@ class AuthViewModel: ViewModel() {
     private var _password = MutableLiveData<String>()
     val password: LiveData<String> = _password
 
-    private val _isLoggedIn = MutableLiveData<Boolean>()
+    private var _isLoggedIn = MutableLiveData<Boolean>()
     val isLoggedIn: LiveData<Boolean> = _isLoggedIn
 
-    private val _username = MutableLiveData<String>()
+    private var _messageError = MutableLiveData<String>()
+    val messageError: LiveData<String> = _messageError
+
+    private var _username = MutableLiveData<String>()
     val username: LiveData<String> = _username
 
     init {
@@ -55,12 +60,16 @@ class AuthViewModel: ViewModel() {
     }
 
     fun doLogin() {
-        if (email.value?.isNotEmpty() == true && password.value?.isNotEmpty() == true) {
+        if(email.value?.isEmpty() == true || password.value?.isEmpty() == true){
+            _messageError.postValue("Email and password are required!")
+
+        }else {
             val loginRequest = LoginRequest(email.value!!, password.value!!)
 
             viewModelScope.launch(Dispatchers.IO) {
                 try {
                     val response = apiService.postLogin(loginRequest)
+
                     if (response.code() == 200) {
                         val responseBody: ResponseBody? = response.body()
                         val json = responseBody?.string()
@@ -72,12 +81,16 @@ class AuthViewModel: ViewModel() {
                             _authToken.postValue(authToken)
                             _isLoggedIn.postValue(true)
                         }
-                    } else {
-                        _isLoggedIn.value = false
+                    }
+
+                    if(response.code() == 400){
+                        _messageError.postValue("Bad Request")
+                    }
+                    else {
+                        _messageError.postValue("Server Error")
                     }
                 } catch (e: Error) {
-                    _isLoggedIn.value = false
-                    e.printStackTrace()
+                    _messageError.postValue(e.message)
                 }
             }
         }

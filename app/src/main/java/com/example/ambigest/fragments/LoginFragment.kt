@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,12 @@ class LoginFragment : Fragment() {
 
                     findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
                 }
+            }
+        }
+
+        authViewModel.messageError.observe(viewLifecycleOwner) {messageError ->
+            if(messageError.isNotBlank()){
+                Toast.makeText(requireContext(), messageError, Toast.LENGTH_SHORT).show()
             }
         }
 
