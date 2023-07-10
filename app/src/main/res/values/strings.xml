@@ -6,4 +6,14 @@
     <string name="palavra_passe">Palavra-passe</string>
     <string name="entrar_no_ambigest">Entrar no ambiGest</string>
     <string name="entrar">ENTRAR</string>
+    <string name="novo_no_ambigest">Novo no ambiGest?</string>
+    <string name="esqueceu_se_da_palavra_passe">Esqueceu-se da palavra-passe?</string>
+    <string name="bem_vindo_a_ambigest">Bem vindo a ambiGest !</string>
+    <string name="insira_o_seu_email">Insira o seu email</string>
+    <string name="registar">REGISTAR</string>
+    <string name="crie_uma_conta">Crie uma conta.</string>
+    <string name="j_possui_conta">Já possui conta?</string>
+    <string name="entrarSmall">Entrar</string>
+    <string name="enviar_email_de_redefini_o_de_senha">ENVIAR EMAIL DE REDEFINIÇÃO DE SENHA</string>
+    <string name="repor_a_palavra_passe">Repor a palavra-passe</string>
 </resources>
