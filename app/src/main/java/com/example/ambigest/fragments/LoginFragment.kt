@@ -71,6 +71,10 @@ class LoginFragment : Fragment() {
         findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
     }
 
+    fun TESTredirectToDashboardFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         binding = null

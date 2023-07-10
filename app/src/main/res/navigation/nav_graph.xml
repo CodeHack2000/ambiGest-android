@@ -40,5 +40,18 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.ambigest.fragments.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_invoicesFragment"
+            app:destination="@id/invoicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/invoicesFragment"
+        android:name="com.example.ambigest.fragments.InvoicesFragment"
+        android:label="Faturação"
+        tools:layout="@layout/fragment_invoices" >
+        <action
+            android:id="@+id/action_invoicesFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 </navigation>
