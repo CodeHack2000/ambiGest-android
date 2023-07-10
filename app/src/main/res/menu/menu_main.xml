@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuItem_user"
+        android:icon="@drawable/ic_user"
+        app:showAsAction="always"
+        android:title="@string/conta"
+        android:visible="false"/>
+    <item
+        android:id="@+id/menuItem_contacts"
+        android:icon="@drawable/ic_contacts"
+        app:showAsAction="always"
+        android:title="@string/contactos"
+        android:visible="false"/>
+    <item
+        android:id="@+id/menuItem_logout"
+        android:icon="@drawable/ic_logout"
+        app:showAsAction="always"
+        android:title="@string/sair"
+        android:visible="false"/>
+</menu>

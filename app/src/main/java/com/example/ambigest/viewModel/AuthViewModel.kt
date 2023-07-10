@@ -67,9 +67,10 @@ class AuthViewModel: ViewModel() {
 
                         if (!json.isNullOrEmpty()) {
                             val jsonObject = JSONObject(json)
-                            _authToken.value = jsonObject.optString("token")
+                            val authToken = jsonObject.optString("token")
 
-                            _isLoggedIn.value = true
+                            _authToken.postValue(authToken)
+                            _isLoggedIn.postValue(true)
                         }
                     } else {
                         _isLoggedIn.value = false

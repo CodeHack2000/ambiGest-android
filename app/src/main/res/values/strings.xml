@@ -30,4 +30,7 @@
     <string name="pr_xima_leitura">Próxima leitura...</string>
     <string name="nova_leitura">Nova Leitura</string>
     <string name="x">X</string>
+    <string name="conta">Conta</string>
+    <string name="contactos">Contactos</string>
+    <string name="sair">Sair</string>
 </resources>
