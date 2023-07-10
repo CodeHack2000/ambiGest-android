@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.ambigest.MainActivity
 import com.example.ambigest.R
 import com.example.ambigest.databinding.FragmentDashboardBinding
 import com.example.ambigest.viewModel.AuthViewModel
@@ -26,6 +27,11 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (requireActivity() is MainActivity) {
+            val mainActivity = requireActivity() as MainActivity
+            mainActivity.showMenuItems()
+        }
 
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner

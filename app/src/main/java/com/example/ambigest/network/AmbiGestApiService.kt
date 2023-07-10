@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-private const val BASE_URL = "http://localhost:3000/"
+private const val BASE_URL = "https://ambigest-backend-3jsnm.ondigitalocean.app/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
