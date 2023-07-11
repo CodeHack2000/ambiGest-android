@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
+import android.util.Log
 
 private const val BASE_URL = "https://ambigest-backend-3jsnm.ondigitalocean.app/"
 
@@ -21,6 +22,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface AmbiGestApiService {
+
     @POST("auth/login")
     suspend fun postLogin(
         @Body request: LoginRequest

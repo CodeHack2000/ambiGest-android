@@ -59,6 +59,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
     implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
 
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
     
@@ -66,8 +68,6 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics-ktx")
 
-    // Faz tudo o que os de cima fazem + transforma o JSON em objeto Kotlin
-    // Moshi
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
     // Retrofit with Moshi Converter
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
